@@ -574,6 +574,10 @@ Any inquiries can be addressed to:
 			<Measurement>
 				<Type>discreet</Type>
 				<Discreets>
+						<Discreet>
+						<Display>Error</Display>
+						<Value>-2</Value>
+					</Discreet>
 					<Discreet>
 						<Display>No Packet Received</Display>
 						<Value>0</Value>

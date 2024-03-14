@@ -284,10 +284,10 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Detailed_result_80 {get { return GetParameter(80); }set { SetParameter(80, value); }}
 	/// <summary>PID: 80  | Type: read</summary>
 	public System.Object Detailed_result {get { return GetParameter(80); }set { SetParameter(80, value); }}
-	/// <summary>PID: 90  | Type: read | DISCREETS: No Packet Received = 0, Normal = 1, Multiple Source Address = 2, More than 2 Source Address = 3 | EXCEPTIONS: Off = -1</summary>
+	/// <summary>PID: 90  | Type: read | DISCREETS: Error = -2, No Packet Received = 0, Normal = 1, Multiple Source Address = 2, More than 2 Source Address = 3 | EXCEPTIONS: Off = -1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Result_90 {get { return GetParameter(90); }set { SetParameter(90, value); }}
-	/// <summary>PID: 90  | Type: read | DISCREETS: No Packet Received = 0, Normal = 1, Multiple Source Address = 2, More than 2 Source Address = 3 | EXCEPTIONS: Off = -1</summary>
+	/// <summary>PID: 90  | Type: read | DISCREETS: Error = -2, No Packet Received = 0, Normal = 1, Multiple Source Address = 2, More than 2 Source Address = 3 | EXCEPTIONS: Off = -1</summary>
 	public System.Object Result {get { return GetParameter(90); }set { SetParameter(90, value); }}
 	/// <summary>PID: 120  | Type: write</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]

@@ -66,7 +66,10 @@ public static class QAction
         // If no devices were found or interface not found, print an error
         if (selectedDevice == null)
         {
-            Console.WriteLine("Invalid network interface name or no such interface found.");
+            protocol.SetParameter(90, -2); //Error
+            protocol.SetParameter(80, "Invalid network interface name or no such interface found."); //Details
+
+            //Console.WriteLine("Invalid network interface name or no such interface found.");
             return;
         }
 
@@ -78,7 +81,9 @@ public static class QAction
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error opening device: {ex.Message}");
+          //  Console.WriteLine($"Error opening device: {ex.Message}");
+            protocol.SetParameter(90, -2); //Error
+            protocol.SetParameter(80, $"Error opening device: {ex.Message}"); //Details
             return;
         }
 
@@ -89,12 +94,18 @@ public static class QAction
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error setting packet filter: {ex.Message}");
+           // Console.WriteLine($"Error setting packet filter: {ex.Message}");
+            protocol.SetParameter(90, -2); //Error
+            protocol.SetParameter(80, $"Error setting packet filter: {ex.Message}"); //Details
             selectedDevice.Close(); // Close the device in case of an error
             return;
         }
 
         DateTime functionEndTime = DateTime.Now + duration; // Calculate end time for the function
+
+
+        //Start process 
+        protocol.SetParameter(90, 0);
 
         // Start the capture process
         selectedDevice.OnPacketArrival += (object sender, CaptureEventArgs e) =>
@@ -108,6 +119,7 @@ public static class QAction
             // If the IP packet is null, ignore
             if (ipPacket == null)
             {
+
                 return;
             }
 
