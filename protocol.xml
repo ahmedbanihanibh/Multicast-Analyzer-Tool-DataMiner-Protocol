@@ -426,7 +426,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>11</Row>
+						<Row>12</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -528,6 +528,13 @@ Any inquiries can be addressed to:
 			</Interprete>
 			<Display>
 				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>10</Row>
+					</Position>
+				</Positions>
 			</Display>
 			<Measurement>
 				<Type lines="5">string</Type>

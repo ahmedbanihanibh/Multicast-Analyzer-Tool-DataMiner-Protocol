@@ -10,6 +10,7 @@ using SharpPcap;
 using SharpPcap.LibPcap;
 using System.Threading;
 using System.Linq;
+using System.Threading.Tasks;
 
 /// <summary>
 /// DataMiner QAction Class: Start Analyzing Multicast Source IP.
@@ -36,7 +37,7 @@ public static class QAction
 
             // Call DetectMulticast method
  
-             DetectMulticast(mc_ip, mc_port, nic, duration, timeout, protocol);
+             DetectMulticastAsync(mc_ip, mc_port, nic, duration, timeout, protocol);
 
 
 
@@ -50,7 +51,7 @@ public static class QAction
 
 	}/// void
 
-    public static void DetectMulticast(string multicastAddress, int multicastPort, string interfaceName, TimeSpan duration, int timeoutInSeconds, SLProtocol protocol)
+    public static async Task DetectMulticastAsync(string multicastAddress, int multicastPort, string interfaceName, TimeSpan duration, int timeoutInSeconds, SLProtocol protocol)
     {
         // Keep track of source IPs for each multicast IP
         var sourceIpsByMulticastIp = new Dictionary<string, Dictionary<string, DateTime>>();
@@ -171,34 +172,45 @@ public static class QAction
         // Start the capture process
         selectedDevice.StartCapture();
 
-        // Monitor for function duration
-        while (DateTime.Now < functionEndTime)
-        {
-            // Calculate elapsed time since the last packet
-            foreach (var multicastEntry in sourceIpsByMulticastIp)
-            {
-                var sourcesToRemove = new List<string>();
+        // Inside your DetectMulticast method
 
-                foreach (var sourceEntry in multicastEntry.Value)
+        // Define an asynchronous method for monitoring function duration
+        async Task MonitorFunctionDurationAsync()
+        {
+            while (DateTime.Now < functionEndTime)
+            {
+                // Calculate elapsed time since the last packet
+                foreach (var multicastEntry in sourceIpsByMulticastIp)
                 {
-                    if ((DateTime.Now - sourceEntry.Value).TotalSeconds > timeoutInSeconds)
+                    var sourcesToRemove = new List<string>();
+
+                    foreach (var sourceEntry in multicastEntry.Value)
                     {
-                        sourcesToRemove.Add(sourceEntry.Key);
+                        if ((DateTime.Now - sourceEntry.Value).TotalSeconds > timeoutInSeconds)
+                        {
+                            sourcesToRemove.Add(sourceEntry.Key);
+                        }
+                    }
+
+                    foreach (var sourceToRemove in sourcesToRemove)
+                    {
+                        multicastEntry.Value.Remove(sourceToRemove);
+                        string param_80 = Convert.ToString(protocol.GetParameter(80));
+                        param_80 += $"{DateTime.Now:HH:mm:ss.fff}: Removed inactive source {sourceToRemove} for multicast address {multicastEntry.Key}";
+                        int param_90 = Convert.ToInt32(protocol.GetParameter(90));
+                        protocol.SetParameter(90, param_90 - 1);
                     }
                 }
 
-                foreach (var sourceToRemove in sourcesToRemove)
-                {
-                    multicastEntry.Value.Remove(sourceToRemove);
-                    string param_80 = Convert.ToString(protocol.GetParameter(80));
-                    param_80 += $"{DateTime.Now:HH:mm:ss.fff}: Removed inactive source {sourceToRemove} for multicast address {multicastEntry.Key}";
-                    protocol.SetParameter(80, param_80);
-                }
+                await Task.Delay(100); // Asynchronously delay for 100 milliseconds before checking again
             }
-
-            Thread.Sleep(100); // Sleep for 100 milliseconds before checking again
         }
 
+        // Start the asynchronous method in a separate task and wait for it to complete
+        Task monitorTask = MonitorFunctionDurationAsync();
+        await monitorTask; // Wait for the background task to complete before continuing
+
+        // Continue with the rest of your code
         // Stop the capture process after function duration
         selectedDevice.StopCapture();
         selectedDevice.Close(); // Close the device
