@@ -170,7 +170,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>5</Row>
+						<Row>6</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -283,7 +283,7 @@ Any inquiries can be addressed to:
 				<Type>number</Type>
 			</Measurement>
 		</Param>
-		<Param id="40">
+		<Param id="40" save="true">
 			<Name>timeout_in_seconds</Name>
 			<Description>Timeout</Description>
 			<Type>read</Type>
@@ -348,7 +348,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>7</Row>
+						<Row>8</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -389,7 +389,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>8</Row>
+						<Row>9</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -426,7 +426,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>12</Row>
+						<Row>13</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -532,7 +532,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>10</Row>
+						<Row>11</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -567,7 +567,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>9</Row>
+						<Row>10</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -591,6 +591,57 @@ Any inquiries can be addressed to:
 						<Value>3</Value>
 					</Discreet>
 				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="41" save="true">
+			<Name>testDuration</Name>
+			<Description>Test Duration</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			    <DefaultValue>60</DefaultValue>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Units>s</Units>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>5</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="141" setter="true">
+			<Name>testDuration</Name>
+			<Description>Test Duration</Description>
+			<Type>write</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Units>s</Units>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>5</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>number</Type>
 			</Measurement>
 		</Param>
 	</Params>

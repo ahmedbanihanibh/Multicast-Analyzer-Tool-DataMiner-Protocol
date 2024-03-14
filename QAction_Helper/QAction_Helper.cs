@@ -33,6 +33,11 @@ public static class Parameter
 	public const int timeout_in_seconds_40 = 40;
 	/// <summary>PID: 40 | Type: read</summary>
 	public const int timeout_in_seconds = 40;
+	/// <summary>PID: 41 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int testduration_41 = 41;
+	/// <summary>PID: 41 | Type: read</summary>
+	public const int testduration = 41;
 	/// <summary>PID: 51 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int status_51 = 51;
@@ -75,6 +80,11 @@ public static class Parameter
 		public const int timeout_in_seconds_140 = 140;
 		/// <summary>PID: 140 | Type: write</summary>
 		public const int timeout_in_seconds = 140;
+		/// <summary>PID: 141 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int testduration_141 = 141;
+		/// <summary>PID: 141 | Type: write</summary>
+		public const int testduration = 141;
 	}
 	public class Multicastanalyzertable
 	{
@@ -147,6 +157,8 @@ public class WriteParameters
 	public System.Object Multicastipport {get { return Protocol.GetParameter(130); }set { Protocol.SetParameter(130, value); }}
 	/// <summary>PID: 140  | Type: write</summary>
 	public System.Object Timeout_in_seconds {get { return Protocol.GetParameter(140); }set { Protocol.SetParameter(140, value); }}
+	/// <summary>PID: 141  | Type: write</summary>
+	public System.Object Testduration {get { return Protocol.GetParameter(141); }set { Protocol.SetParameter(141, value); }}
 	public SLProtocolExt Protocol;
 	public WriteParameters(SLProtocolExt protocol)
 	{
@@ -171,6 +183,8 @@ public interface SLProtocolExt : SLProtocol
 	object Multicastipport { get; set; }
 	object Timeout_in_seconds_40 { get; set; }
 	object Timeout_in_seconds { get; set; }
+	object Testduration_41 { get; set; }
+	object Testduration { get; set; }
 	object StartAnalyzing_50 { get; set; }
 	object StartAnalyzing { get; set; }
 	object Status_51 { get; set; }
@@ -190,6 +204,7 @@ public interface SLProtocolExt : SLProtocol
 	object Multicastipaddress_120 { get; set; }
 	object Multicastipport_130 { get; set; }
 	object Timeout_in_seconds_140 { get; set; }
+	object Testduration_141 { get; set; }
 	WriteParameters Write { get; set; }
 }
 public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
@@ -230,6 +245,11 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Timeout_in_seconds_40 {get { return GetParameter(40); }set { SetParameter(40, value); }}
 	/// <summary>PID: 40  | Type: read</summary>
 	public System.Object Timeout_in_seconds {get { return GetParameter(40); }set { SetParameter(40, value); }}
+	/// <summary>PID: 41  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Testduration_41 {get { return GetParameter(41); }set { SetParameter(41, value); }}
+	/// <summary>PID: 41  | Type: read</summary>
+	public System.Object Testduration {get { return GetParameter(41); }set { SetParameter(41, value); }}
 	/// <summary>PID: 50  | Type: write | DISCREETS: Start Analyzing = 1</summary>
 	public System.Object StartAnalyzing_50 {get { return GetParameter(50); }set { SetParameter(50, value); }}
 	/// <summary>PID: 50  | Type: write | DISCREETS: Start Analyzing = 1</summary>
@@ -278,6 +298,9 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	/// <summary>PID: 140  | Type: write</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Timeout_in_seconds_140 {get { return GetParameter(140); }set { SetParameter(140, value); }}
+	/// <summary>PID: 141  | Type: write</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Testduration_141 {get { return GetParameter(141); }set { SetParameter(141, value); }}
 	public WriteParameters Write { get; set; }
 	public ConcreteSLProtocolExt()
 	{

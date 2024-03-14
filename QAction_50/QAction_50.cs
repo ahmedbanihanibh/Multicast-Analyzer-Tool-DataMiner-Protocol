@@ -30,8 +30,9 @@ public static class QAction
             string mc_ip = Convert.ToString(protocol.GetParameter(20));
             int mc_port = Convert.ToInt32(protocol.GetParameter(30));
             int timeout = Convert.ToInt32(protocol.GetParameter(40));
+            int testDuration = Convert.ToInt32(protocol.GetParameter(41));
 
-            TimeSpan duration = TimeSpan.FromMinutes(1);
+            TimeSpan duration = TimeSpan.FromSeconds(testDuration);
 
             var myNewAction = new MyClass();
 
@@ -112,6 +113,24 @@ public static class QAction
 
             var destinationAddress = ipPacket.DestinationAddress.ToString();
             var sourceAddress = ipPacket.SourceAddress.ToString();
+            int sourcePort = 0;
+
+            // Check if the packet is TCP
+            var tcpPacket = ipPacket.PayloadPacket as TcpPacket;
+            if (tcpPacket != null)
+            {
+                sourcePort = tcpPacket.SourcePort;
+            }
+
+            // If it's not TCP, check if it's UDP
+            if (tcpPacket == null)
+            {
+                var udpPacket = ipPacket.PayloadPacket as UdpPacket;
+                if (udpPacket != null)
+                {
+                    sourcePort = udpPacket.SourcePort;
+                }
+            }
 
             // Check if we've seen this multicast IP before
             if (!sourceIpsByMulticastIp.ContainsKey(destinationAddress))
@@ -119,20 +138,31 @@ public static class QAction
                 sourceIpsByMulticastIp[destinationAddress] = new Dictionary<string, DateTime>();
             }
 
-            // Update or add the source IP with the current timestamp
-            sourceIpsByMulticastIp[destinationAddress][sourceAddress] = DateTime.Now;
+            // Combine source address and port into a single key
+            var sourceKey = $"{sourceAddress}:{sourcePort}";
+
+            // Update or add the source IP and port with the current timestamp
+            sourceIpsByMulticastIp[destinationAddress][sourceKey] = DateTime.Now;
+
+
+            // Update or add the source IP and port with the current timestamp
+             sourceIpsByMulticastIp[destinationAddress][sourceKey] = DateTime.Now;
 
 
             if (sourceIpsByMulticastIp[destinationAddress].Count < 1)
             {
 
                 protocol.SetParameter(90, 0);
+              //  protocol.SetParameter(80,payloadData);
+
             }
 
             if (sourceIpsByMulticastIp[destinationAddress].Count == 1 )
             {
 
                 protocol.SetParameter(90, 1);
+                protocol.SetParameter(80, sourceKey);
+ 
             }
 
 
@@ -155,6 +185,8 @@ public static class QAction
                 ///
 
                 protocol.SetParameter(90, 2);
+              //  protocol.SetParameter(80, sourceAddress);
+
 
             }
 
