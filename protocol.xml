@@ -600,7 +600,7 @@
 				<RTDisplay>true</RTDisplay>
 				<Units>s</Units>
 				<Range>
-					<Low>0</Low>
+					<Low>1</Low>
 									<High>3600</High>
 				</Range>
 				<Positions>
