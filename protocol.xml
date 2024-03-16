@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>Multicast Analyzer Tool</Name>
 	<Description>Multicast Analyzer Tool DataMiner connector</Description>
@@ -10,7 +10,7 @@
 	<DeviceOID>01</DeviceOID>
 	<ElementType>Analyzer</ElementType>
 	<Type relativeTimers="true">virtual</Type>
-	<Display defaultPage="General" pageOrder="General;Settings" wideColumnPages="Settings;General"/>
+	<Display defaultPage="General" pageOrder="General;Settings" wideColumnPages="Settings;General" />
 	<SNMP includepages="true">auto</SNMP>
 
 	<Compliancies>
@@ -255,6 +255,10 @@
 			</Interprete>
 			<Display>
 				<RTDisplay>true</RTDisplay>
+				<Range>
+					<Low>1</Low>
+					<High>60</High>
+				</Range>
 				<Units>s</Units>
 				<Positions>
 					<Position>
@@ -279,6 +283,10 @@
 			</Interprete>
 			<Display>
 				<RTDisplay>true</RTDisplay>
+				<Range>
+					<Low>1</Low>
+					<High>60</High>
+				</Range>
 				<Units>s</Units>
 				<Positions>
 					<Position>
@@ -563,6 +571,10 @@
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>s</Units>
+					<Range>
+					<Low>1</Low>
+					<High>3600</High>
+				</Range>
 				<Positions>
 					<Position>
 						<Page>Settings</Page>
@@ -587,6 +599,10 @@
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>s</Units>
+				<Range>
+					<Low>0</Low>
+									<High>3600</High>
+				</Range>
 				<Positions>
 					<Position>
 						<Page>Settings</Page>
@@ -671,7 +687,7 @@
 	
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
-		<QAction id="2" name="After Startup" encoding="csharp" triggers="2"/>
+		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" />
 		<QAction id="50" name="Start Analyzing Multicast Source IP" encoding="csharp" triggers="50">
 		</QAction>
 		<QAction id="80" name="Add row to Table 70" encoding="csharp" triggers="80">
