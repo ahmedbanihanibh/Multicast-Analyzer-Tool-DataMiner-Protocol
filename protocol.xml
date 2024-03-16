@@ -55,7 +55,7 @@ Any inquiries can be addressed to:
 	<DeviceOID>01</DeviceOID>
 	<ElementType>Analyzer</ElementType>
 	<Type relativeTimers="true">virtual</Type>
-	<Display defaultPage="General" pageOrder="General" wideColumnPages="General"/>
+	<Display defaultPage="General" pageOrder="General;Settings" wideColumnPages="Settings;General"/>
 	<SNMP includepages="true">auto</SNMP>
 
 	<Compliancies>
@@ -86,7 +86,7 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>1</Row>
 					</Position>
@@ -110,7 +110,7 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>1</Row>
 					</Position>
@@ -145,13 +145,13 @@ Any inquiries can be addressed to:
 		</Param>
 		<Param id="8">
 			<Name>Title_Begin_MutlicastOptions</Name>
-			<Description>Settings</Description>
+			<Description>Configuration</Description>
 			<Type>fixed</Type>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>0</Row>
 					</Position>
@@ -168,7 +168,7 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>6</Row>
 					</Position>
@@ -194,7 +194,7 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>2</Row>
 					</Position>
@@ -217,7 +217,7 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>2</Row>
 					</Position>
@@ -250,7 +250,7 @@ Any inquiries can be addressed to:
 				</Range>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>3</Row>
 					</Position>
@@ -273,7 +273,7 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>3</Row>
 					</Position>
@@ -303,7 +303,7 @@ Any inquiries can be addressed to:
 				<Units>s</Units>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>4</Row>
 					</Position>
@@ -327,7 +327,7 @@ Any inquiries can be addressed to:
 				<Units>s</Units>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>4</Row>
 					</Position>
@@ -348,7 +348,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>8</Row>
+						<Row>0</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -362,7 +362,7 @@ Any inquiries can be addressed to:
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="51" save="true">
+		<Param id="51">
 			<Name>status</Name>
 			<Description>Status</Description>
 			<Type>read</Type>
@@ -389,7 +389,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>9</Row>
+						<Row>2</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -412,7 +412,7 @@ Any inquiries can be addressed to:
 			<Description>Multicast Analyzer Table</Description>
 			<Type>array</Type>
 			<ArrayOptions index="0">
-				<ColumnOption idx="0" pid="71" type="retrieved" options="" />
+				<ColumnOption idx="0" pid="71" type="autoincrement" options="" />
 				<ColumnOption idx="1" pid="72" type="retrieved" options="" />
 				<ColumnOption idx="2" pid="73" type="retrieved" options="" />
 				<ColumnOption idx="3" pid="74" type="retrieved" options=";enableHeaderSum;enableHistogram;enableHeatmap" />
@@ -426,7 +426,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>13</Row>
+						<Row>4</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -494,8 +494,8 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="74">
-			<Name>bitrate</Name>
-			<Description>Bitrate</Description>
+			<Name>length</Name>
+			<Description>Length</Description>
 			<Type>read</Type>
 			<Information>
 			</Information>
@@ -509,7 +509,6 @@ Any inquiries can be addressed to:
 			</Alarm>
 			<Display>
 				<RTDisplay>true</RTDisplay>
-				<Units>kbps</Units>
 			</Display>
 			<Measurement>
 				<Type>number</Type>
@@ -528,13 +527,6 @@ Any inquiries can be addressed to:
 			</Interprete>
 			<Display>
 				<RTDisplay>true</RTDisplay>
-				<Positions>
-					<Position>
-						<Page>General</Page>
-						<Column>0</Column>
-						<Row>11</Row>
-					</Position>
-				</Positions>
 			</Display>
 			<Measurement>
 				<Type lines="5">string</Type>
@@ -567,14 +559,18 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>10</Row>
+						<Row>3</Row>
 					</Position>
 				</Positions>
 			</Display>
 			<Measurement>
 				<Type>discreet</Type>
 				<Discreets>
-						<Discreet>
+					<Discreet>
+						<Display>Finished</Display>
+						<Value>-3</Value>
+					</Discreet>
+					<Discreet>
 						<Display>Error</Display>
 						<Value>-2</Value>
 					</Discreet>
@@ -607,14 +603,14 @@ Any inquiries can be addressed to:
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
-			    <DefaultValue>60</DefaultValue>
+				<DefaultValue>60</DefaultValue>
 			</Interprete>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Units>s</Units>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>5</Row>
 					</Position>
@@ -638,7 +634,7 @@ Any inquiries can be addressed to:
 				<Units>s</Units>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Settings</Page>
 						<Column>0</Column>
 						<Row>5</Row>
 					</Position>
@@ -648,12 +644,86 @@ Any inquiries can be addressed to:
 				<Type>number</Type>
 			</Measurement>
 		</Param>
+		<Param id="83">
+			<Name>deleted_row</Name>
+			<Description>deleted row</Description>
+			<Type>read</Type>
+			<Information>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="49">
+			<Name>Stop Analyzing</Name>
+			<Type>write</Type>
+			<Information>
+			</Information>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>1</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>button</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Stop Analyzing</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="48">
+			<Name>Clear All</Name>
+			<Type>write</Type>
+			<Information>
+			</Information>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>5</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type>button</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Clear All</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
 	</Params>
 	
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
-		<QAction id="2" name="After Startup" encoding="csharp" triggers="2" dllImport="[ProtocolName].[ProtocolVersion].QAction.1.dll"/>
+		<QAction id="2" name="After Startup" encoding="csharp" triggers="2"/>
 		<QAction id="50" name="Start Analyzing Multicast Source IP" encoding="csharp" triggers="50">
+		</QAction>
+		<QAction id="80" name="Add row to Table 70" encoding="csharp" triggers="80">
+		</QAction>
+		<QAction id="49" name="Stop Analyzing" encoding="csharp" triggers="49">
+		</QAction>
+		<QAction id="48" name="Clear All Entries in Table 70" encoding="csharp" triggers="48">
 		</QAction>
 	</QActions>
 

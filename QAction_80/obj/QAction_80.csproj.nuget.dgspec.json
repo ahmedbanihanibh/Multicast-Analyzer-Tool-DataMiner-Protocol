@@ -1,0 +1,108 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_80\\QAction_80.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_80\\QAction_80.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_80\\QAction_80.csproj",
+        "projectName": "QAction_80",
+        "projectPath": "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_80\\QAction_80.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_80\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net462"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net462": {
+            "targetAlias": "net462",
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_Helper\\QAction_Helper.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_Helper\\QAction_Helper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net462": {
+          "targetAlias": "net462",
+          "dependencies": {
+            "Skyline.DataMiner.Dev.Protocol": {
+              "target": "Package",
+              "version": "[10.1.0.6, )"
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.1.118, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_Helper\\QAction_Helper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_Helper\\QAction_Helper.csproj",
+        "projectName": "QAction_Helper",
+        "projectPath": "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_Helper\\QAction_Helper.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\Music\\My Developed Drivers_2023\\Multicast Analyzer Tool\\Multicast Analyzer Tool\\QAction_Helper\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net462"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net462": {
+            "targetAlias": "net462",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net462": {
+          "targetAlias": "net462",
+          "dependencies": {
+            "Skyline.DataMiner.Dev.Protocol": {
+              "target": "Package",
+              "version": "[10.1.0.6, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -48,6 +48,11 @@ public static class Parameter
 	public const int detailed_result_80 = 80;
 	/// <summary>PID: 80 | Type: read</summary>
 	public const int detailed_result = 80;
+	/// <summary>PID: 83 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int deleted_row_83 = 83;
+	/// <summary>PID: 83 | Type: read</summary>
+	public const int deleted_row = 83;
 	/// <summary>PID: 90 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int result_90 = 90;
@@ -60,6 +65,16 @@ public static class Parameter
 		public const int network_interfaces_11 = 11;
 		/// <summary>PID: 11 | Type: write</summary>
 		public const int network_interfaces = 11;
+		/// <summary>PID: 48 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int clearAll_48 = 48;
+		/// <summary>PID: 48 | Type: write</summary>
+		public const int clearAll = 48;
+		/// <summary>PID: 49 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int stopAnalyzing_49 = 49;
+		/// <summary>PID: 49 | Type: write</summary>
+		public const int stopAnalyzing = 49;
 		/// <summary>PID: 50 | Type: write</summary>
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public const int startAnalyzing_50 = 50;
@@ -113,9 +128,9 @@ public static class Parameter
 			public const int sourceport = 73;
 			/// <summary>PID: 74 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int bitrate_74 = 74;
+			public const int length_74 = 74;
 			/// <summary>PID: 74 | Type: read</summary>
-			public const int bitrate = 74;
+			public const int length = 74;
 			public class Write
 			{
 			}
@@ -139,9 +154,9 @@ public static class Parameter
 			public const int sourceport = 2;
 			/// <summary>IDX: 3 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int bitrate_74 = 3;
+			public const int length_74 = 3;
 			/// <summary>IDX: 3 | Type: read</summary>
-			public const int bitrate = 3;
+			public const int length = 3;
 		}
 	}
 }
@@ -149,6 +164,10 @@ public class WriteParameters
 {
 	/// <summary>PID: 11  | Type: write</summary>
 	public System.Object Network_interfaces {get { return Protocol.GetParameter(11); }set { Protocol.SetParameter(11, value); }}
+	/// <summary>PID: 48  | Type: write | DISCREETS: Clear All = 1</summary>
+	public System.Object ClearAll {get { return Protocol.GetParameter(48); }set { Protocol.SetParameter(48, value); }}
+	/// <summary>PID: 49  | Type: write | DISCREETS: Stop Analyzing = 1</summary>
+	public System.Object StopAnalyzing {get { return Protocol.GetParameter(49); }set { Protocol.SetParameter(49, value); }}
 	/// <summary>PID: 50  | Type: write | DISCREETS: Start Analyzing = 1</summary>
 	public System.Object StartAnalyzing {get { return Protocol.GetParameter(50); }set { Protocol.SetParameter(50, value); }}
 	/// <summary>PID: 120  | Type: write</summary>
@@ -185,6 +204,10 @@ public interface SLProtocolExt : SLProtocol
 	object Timeout_in_seconds { get; set; }
 	object Testduration_41 { get; set; }
 	object Testduration { get; set; }
+	object ClearAll_48 { get; set; }
+	object ClearAll { get; set; }
+	object StopAnalyzing_49 { get; set; }
+	object StopAnalyzing { get; set; }
 	object StartAnalyzing_50 { get; set; }
 	object StartAnalyzing { get; set; }
 	object Status_51 { get; set; }
@@ -195,10 +218,12 @@ public interface SLProtocolExt : SLProtocol
 	object Sourceip { get; set; }
 	object Sourceport_73 { get; set; }
 	object Sourceport { get; set; }
-	object Bitrate_74 { get; set; }
-	object Bitrate { get; set; }
+	object Length_74 { get; set; }
+	object Length { get; set; }
 	object Detailed_result_80 { get; set; }
 	object Detailed_result { get; set; }
+	object Deleted_row_83 { get; set; }
+	object Deleted_row { get; set; }
 	object Result_90 { get; set; }
 	object Result { get; set; }
 	object Multicastipaddress_120 { get; set; }
@@ -250,6 +275,14 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Testduration_41 {get { return GetParameter(41); }set { SetParameter(41, value); }}
 	/// <summary>PID: 41  | Type: read</summary>
 	public System.Object Testduration {get { return GetParameter(41); }set { SetParameter(41, value); }}
+	/// <summary>PID: 48  | Type: write | DISCREETS: Clear All = 1</summary>
+	public System.Object ClearAll_48 {get { return GetParameter(48); }set { SetParameter(48, value); }}
+	/// <summary>PID: 48  | Type: write | DISCREETS: Clear All = 1</summary>
+	public System.Object ClearAll {get { return Write.ClearAll; }set { Write.ClearAll = value; }}
+	/// <summary>PID: 49  | Type: write | DISCREETS: Stop Analyzing = 1</summary>
+	public System.Object StopAnalyzing_49 {get { return GetParameter(49); }set { SetParameter(49, value); }}
+	/// <summary>PID: 49  | Type: write | DISCREETS: Stop Analyzing = 1</summary>
+	public System.Object StopAnalyzing {get { return Write.StopAnalyzing; }set { Write.StopAnalyzing = value; }}
 	/// <summary>PID: 50  | Type: write | DISCREETS: Start Analyzing = 1</summary>
 	public System.Object StartAnalyzing_50 {get { return GetParameter(50); }set { SetParameter(50, value); }}
 	/// <summary>PID: 50  | Type: write | DISCREETS: Start Analyzing = 1</summary>
@@ -276,18 +309,23 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Sourceport {get { return GetParameter(73); }set { SetParameter(73, value); }}
 	/// <summary>PID: 74  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Bitrate_74 {get { return GetParameter(74); }set { SetParameter(74, value); }}
+	public System.Object Length_74 {get { return GetParameter(74); }set { SetParameter(74, value); }}
 	/// <summary>PID: 74  | Type: read</summary>
-	public System.Object Bitrate {get { return GetParameter(74); }set { SetParameter(74, value); }}
+	public System.Object Length {get { return GetParameter(74); }set { SetParameter(74, value); }}
 	/// <summary>PID: 80  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Detailed_result_80 {get { return GetParameter(80); }set { SetParameter(80, value); }}
 	/// <summary>PID: 80  | Type: read</summary>
 	public System.Object Detailed_result {get { return GetParameter(80); }set { SetParameter(80, value); }}
-	/// <summary>PID: 90  | Type: read | DISCREETS: Error = -2, No Packet Received = 0, Normal = 1, Multiple Source Address = 2, More than 2 Source Address = 3 | EXCEPTIONS: Off = -1</summary>
+	/// <summary>PID: 83  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Deleted_row_83 {get { return GetParameter(83); }set { SetParameter(83, value); }}
+	/// <summary>PID: 83  | Type: read</summary>
+	public System.Object Deleted_row {get { return GetParameter(83); }set { SetParameter(83, value); }}
+	/// <summary>PID: 90  | Type: read | DISCREETS: Finished = -3, Error = -2, No Packet Received = 0, Normal = 1, Multiple Source Address = 2, More than 2 Source Address = 3 | EXCEPTIONS: Off = -1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Result_90 {get { return GetParameter(90); }set { SetParameter(90, value); }}
-	/// <summary>PID: 90  | Type: read | DISCREETS: Error = -2, No Packet Received = 0, Normal = 1, Multiple Source Address = 2, More than 2 Source Address = 3 | EXCEPTIONS: Off = -1</summary>
+	/// <summary>PID: 90  | Type: read | DISCREETS: Finished = -3, Error = -2, No Packet Received = 0, Normal = 1, Multiple Source Address = 2, More than 2 Source Address = 3 | EXCEPTIONS: Off = -1</summary>
 	public System.Object Result {get { return GetParameter(90); }set { SetParameter(90, value); }}
 	/// <summary>PID: 120  | Type: write</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
@@ -335,9 +373,9 @@ public class MulticastanalyzertableQActionRow : QActionTableRow
 	public System.Object Sourceport { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
 	/// <summary>PID: 74 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Bitrate_74 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	public System.Object Length_74 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
 	/// <summary>PID: 74 | Type: read</summary>
-	public System.Object Bitrate { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	public System.Object Length { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
 	public MulticastanalyzertableQActionRow() : base(0, 4) { }
 	public MulticastanalyzertableQActionRow(System.Object[] oRow) : base(0, 4, oRow) { }
 	public static implicit operator MulticastanalyzertableQActionRow(System.Object[] source) { return new MulticastanalyzertableQActionRow(source); }

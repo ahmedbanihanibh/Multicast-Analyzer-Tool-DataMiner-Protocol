@@ -18,6 +18,11 @@ public static class QAction
         try
         {
 
+
+            // Delete All Nodes in table PID __70
+            protocol.ClearAllKeys(Parameter.Multicastanalyzertable.tablePid);
+
+
             // Instantiate MyNewAction to access RetrieveNetworkInterfaces method
             var myNewAction = new MyClass();
 
