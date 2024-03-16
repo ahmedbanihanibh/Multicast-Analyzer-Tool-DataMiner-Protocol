@@ -6,7 +6,7 @@ The Multicast Analyzer Tool DataMiner Protocol is a C# application designed to f
 ## Key Features
 - **Conflict Multicast IP Address Detection**: Detect instances where multiple source IP addresses are generating the same multicast group within the network.
 - **Network Interface Selection**: Specify network interfaces for testing.
-- **Multicast IP and Port Configuration**: Define multicast IP addresses and ports to search for.
+- **Multicast IP and Port Configuration**: Define multicast IP addresse and port (Multicast Group) to search for.
 - **Timeout Configuration**: Set timeout values to confirm inactive packet sources.
 - **Test Duration Setting**: Specify the duration of tests.
 - **Results Display**: View analysis results, including source IP addresses and ports, in a clear and organized manner.
@@ -14,12 +14,12 @@ The Multicast Analyzer Tool DataMiner Protocol is a C# application designed to f
 ## Installation
 1. Clone this repository to your local machine.
 2. Open the solution in Visual Studio or your preferred C# IDE.
-3. Build the solution to generate the executable.
+3. Publish it to the DataMiner Environemnt.
 
 ## Usage
-1. Run the generated executable.
+1. Create an Element.
 2. Configure network interfaces and settings in the Settings page.
-3. Start the analysis to detect conflicting multicast IP addresses.
+3. Start the analysis to detect conflicting multicast IP source addresses.
 4. View analysis results in the Multicast Analyzer Table on the Main General page.
 
 ## Dependencies
